@@ -34,4 +34,4 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            ${{ github.repository_owner }}/avidemux:2.8.0
+            slavasubotskiy//avidemux:2.8.0
