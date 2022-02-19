@@ -80,7 +80,7 @@ RUN \
     curl -# -L ${TWOLAME_URL} | tar xz && \
     curl -# -L ${AFTEN_URL} | tar xj && \
     curl -# -L ${LIBDCA_URL} | tar xj && \
-#    curl -# -L ${DCAENC_URL} | tar xz && \
+    curl -# -L ${DCAENC_URL} | tar xz && \
     # Compile opencore-amr.
     echo 'Compiling opencore-amr...' && \
     cd opencore-amr-${OPENCORE_AMR_VERSION} && \
