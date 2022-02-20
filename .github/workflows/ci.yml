@@ -34,4 +34,4 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            slavasubotskiy/avidemux:2.8.0
+            ghcr.io/slavasubotskiy/avidemux:2.8.0
