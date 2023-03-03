@@ -28,7 +28,7 @@ WORKDIR /tmp
 
 # Compile Avidemux
 RUN \
-    add-pkg --virtual build-dependencies \
+    apk add --no-cache --virtual .build-dependencies \
         curl \
         build-base \
         patch \
@@ -176,12 +176,12 @@ RUN \
         /usr/lib/libdcaenc.la \
         /usr/bin/dcaenc \
         && \
-    del-pkg build-dependencies fdk-aac-dev && \
+    apk del .build-dependencies fdk-aac-dev && \
     rm -rf /tmp/* /tmp/.[!.]*
 
 # Install dependencies.
 RUN \
-    add-pkg \
+    apk add \
          sqlite-libs \
          qt5-qtbase-x11 \
          glu \
