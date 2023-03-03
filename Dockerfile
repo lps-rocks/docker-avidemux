@@ -185,7 +185,6 @@ RUN \
          sqlite-libs \
          qt5-qtbase-x11 \
          glu \
-         #libva \
          libvdpau \
          libxv \
          libvorbis \
