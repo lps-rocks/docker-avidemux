@@ -206,8 +206,8 @@ RUN \
 RUN \
     env HOME=/tmp /usr/bin/avidemux3_cli --help > /dev/null && \
     mv /tmp/.avidemux6/config3 /defaults/ && \
-    sed -e -i 's|"language" : "",|"language" : "en",|' /defaults/config3 && \
-    sed -e -i 's/"enabled" : true,/"enabled" : false,/' /defaults/config3 && \
+    sed -i -e 's|"language" : "",|"language" : "en",|' /defaults/config3 && \
+    sed -i -e 's/"enabled" : true,/"enabled" : false,/' /defaults/config3 && \
     rm -r /tmp/.avidemux6
 
 # Add files.
