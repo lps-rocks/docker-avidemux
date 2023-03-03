@@ -130,14 +130,14 @@ RUN \
     cd .. && \
     # Patch avidemux source.
     echo 'Patching avidemux...' && \
-    sed-patch 's|#ifndef __APPLE__|#if 0 //#ifndef __APPLE__|' avidemux_${AVIDEMUX_VERSION}/avidemux/common/main.cpp && \
-    sed-patch 's|#ifndef __APPLE__|#if 0 //#ifndef __APPLE__|' avidemux_${AVIDEMUX_VERSION}/avidemux/qt4/ADM_jobs/src/ADM_jobs.cpp && \
-    sed-patch 's|#ifndef __APPLE__|#if 0 //#ifndef __APPLE__|' avidemux_${AVIDEMUX_VERSION}/avidemux_core/ADM_core/include/ADM_assert.h && \
-    sed-patch 's|#include <execinfo.h>|//#include <execinfo.h>|' avidemux_${AVIDEMUX_VERSION}/avidemux_core/ADM_core/src/ADM_crashdump_unix.cpp && \
-    sed-patch 's|#if !defined(__HAIKU__) && !defined(__sun__)|#if 0 //#if !defined(__HAIKU__) && !defined(__sun__)|' avidemux_${AVIDEMUX_VERSION}/avidemux_core/ADM_core/src/ADM_crashdump_unix.cpp && \
-    sed-patch 's|canonicalize_file_name(in.c_str())|realpath(in.c_str(), NULL)|' avidemux_${AVIDEMUX_VERSION}/avidemux_core/ADM_core/src/ADM_folder_linux.cpp && \
-    sed-patch 's|^\(END\)\?IF (NOT APPLE)|#\1IF (NOT APPLE)|' avidemux_${AVIDEMUX_VERSION}/avidemux_core/ADM_core/src/CMakeLists.txt && \
-    sed-patch 's|SET(ADM_core_SRCS \(.*\) ADM_memcpy.cpp|#SET(ADM_core_SRCS \1 ADM_memcpy.cpp|' avidemux_${AVIDEMUX_VERSION}/avidemux_core/ADM_core/src/CMakeLists.txt && \
+    sed -e -i 's|#ifndef __APPLE__|#if 0 //#ifndef __APPLE__|' avidemux_${AVIDEMUX_VERSION}/avidemux/common/main.cpp && \
+    sed -e -i 's|#ifndef __APPLE__|#if 0 //#ifndef __APPLE__|' avidemux_${AVIDEMUX_VERSION}/avidemux/qt4/ADM_jobs/src/ADM_jobs.cpp && \
+    sed -e -i 's|#ifndef __APPLE__|#if 0 //#ifndef __APPLE__|' avidemux_${AVIDEMUX_VERSION}/avidemux_core/ADM_core/include/ADM_assert.h && \
+    sed -e -i 's|#include <execinfo.h>|//#include <execinfo.h>|' avidemux_${AVIDEMUX_VERSION}/avidemux_core/ADM_core/src/ADM_crashdump_unix.cpp && \
+    sed -e -i 's|#if !defined(__HAIKU__) && !defined(__sun__)|#if 0 //#if !defined(__HAIKU__) && !defined(__sun__)|' avidemux_${AVIDEMUX_VERSION}/avidemux_core/ADM_core/src/ADM_crashdump_unix.cpp && \
+    sed -e -i 's|canonicalize_file_name(in.c_str())|realpath(in.c_str(), NULL)|' avidemux_${AVIDEMUX_VERSION}/avidemux_core/ADM_core/src/ADM_folder_linux.cpp && \
+    sed -e -i 's|^\(END\)\?IF (NOT APPLE)|#\1IF (NOT APPLE)|' avidemux_${AVIDEMUX_VERSION}/avidemux_core/ADM_core/src/CMakeLists.txt && \
+    sed -e -i 's|SET(ADM_core_SRCS \(.*\) ADM_memcpy.cpp|#SET(ADM_core_SRCS \1 ADM_memcpy.cpp|' avidemux_${AVIDEMUX_VERSION}/avidemux_core/ADM_core/src/CMakeLists.txt && \
     # Compile avidemux.
     echo 'Compiling avidemux...' && \
     cd avidemux_${AVIDEMUX_VERSION} && \
@@ -207,14 +207,9 @@ RUN \
 RUN \
     env HOME=/tmp /usr/bin/avidemux3_cli --help > /dev/null && \
     mv /tmp/.avidemux6/config3 /defaults/ && \
-    sed-patch 's|"language" : "",|"language" : "en",|' /defaults/config3 && \
-    sed-patch 's/"enabled" : true,/"enabled" : false,/' /defaults/config3 && \
+    sed -e -i 's|"language" : "",|"language" : "en",|' /defaults/config3 && \
+    sed -e -i 's/"enabled" : true,/"enabled" : false,/' /defaults/config3 && \
     rm -r /tmp/.avidemux6
-
-# Generate and install favicons.
-RUN \
-    APP_ICON_URL=https://raw.githubusercontent.com/jlesage/docker-templates/master/jlesage/images/avidemux-icon.png && \
-    install_app_icon.sh "$APP_ICON_URL"
 
 # Add files.
 COPY rootfs/ /
