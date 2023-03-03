@@ -5,13 +5,10 @@
 #
 
 # Pull base image.
-FROM jlesage/baseimage-gui:alpine-3.12-v3.5.7
-
-# Docker image version is provided via build arg.
-ARG DOCKER_IMAGE_VERSION=unknown
+FROM alpine:latest
 
 # Define software versions.
-ARG AVIDEMUX_VERSION=2.8.0
+ARG AVIDEMUX_VERSION=2.8.1
 ARG OPENCORE_AMR_VERSION=0.1.5
 ARG TWOLAME_VERSION=0.4.0
 ARG AFTEN_VERSION=0.0.8
@@ -228,11 +225,3 @@ ENV APP_NAME="Avidemux"
 # Define mountable directories.
 VOLUME ["/config"]
 VOLUME ["/storage"]
-
-# Metadata.
-LABEL \
-      org.label-schema.name="avidemux" \
-      org.label-schema.description="Docker container for Avidemux" \
-      org.label-schema.version="$DOCKER_IMAGE_VERSION" \
-      org.label-schema.vcs-url="https://github.com/jlesage/docker-avidemux" \
-      org.label-schema.schema-version="1.0"
