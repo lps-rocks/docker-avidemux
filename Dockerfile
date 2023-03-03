@@ -8,7 +8,7 @@
 FROM alpine:latest
 
 # Define software versions.
-ARG AVIDEMUX_VERSION=2.8.0
+ARG AVIDEMUX_VERSION=2.8.1
 ARG OPENCORE_AMR_VERSION=0.1.5
 ARG TWOLAME_VERSION=0.4.0
 ARG AFTEN_VERSION=0.0.8
@@ -137,6 +137,7 @@ RUN \
     sed -i -e 's|canonicalize_file_name(in.c_str())|realpath(in.c_str(), NULL)|' avidemux_${AVIDEMUX_VERSION}/avidemux_core/ADM_core/src/ADM_folder_linux.cpp && \
     sed -i -e 's|^\(END\)\?IF (NOT APPLE)|#\1IF (NOT APPLE)|' avidemux_${AVIDEMUX_VERSION}/avidemux_core/ADM_core/src/CMakeLists.txt && \
     sed -i -e 's|SET(ADM_core_SRCS \(.*\) ADM_memcpy.cpp|#SET(ADM_core_SRCS \1 ADM_memcpy.cpp|' avidemux_${AVIDEMUX_VERSION}/avidemux_core/ADM_core/src/CMakeLists.txt && \
+    sed -i -e 's|diaMenuEntry format[]={{MP4_MUXER_MP4,"MP4"},{MP4_MUXER_PSP,"PSP"},NULL};|diaMenuEntry format[]={{MP4_MUXER_MP4,"MP4",NULL},{MP4_MUXER_PSP,"PSP",NULL}};' avidemux_${AVIDEMUX_VERSION}/avidemux_plugins/ADM_muxers/muxerMp4/muxerMP4Config.cpp && \
     # Compile avidemux.
     echo 'Compiling avidemux...' && \
     cd avidemux_${AVIDEMUX_VERSION} && \
