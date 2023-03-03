@@ -49,7 +49,6 @@ RUN \
         sqlite-dev \
         fribidi-dev \
         libvdpau-dev \
-        #libva-dev \
         x264-dev \
         x265-dev \
         xvidcore-dev \
