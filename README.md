@@ -1,13 +1,10 @@
 # Docker container for Avidemux
-[![Docker Image Size](https://img.shields.io/docker/image-size/jlesage/avidemux/latest)](https://hub.docker.com/r/jlesage/avidemux/tags) [![Build Status](https://drone.le-sage.com/api/badges/jlesage/docker-avidemux/status.svg)](https://drone.le-sage.com/jlesage/docker-avidemux) [![GitHub Release](https://img.shields.io/github/release/jlesage/docker-avidemux.svg)](https://github.com/jlesage/docker-avidemux/releases/latest) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/JocelynLeSage/0usd)
 
 This is a Docker container for [Avidemux](http://avidemux.org/).
 
 The GUI of the application is accessed through a modern web browser (no installation or configuration needed on the client side) or via any VNC client.
 
 ---
-
-[![Avidemux logo](https://images.weserv.nl/?url=raw.githubusercontent.com/jlesage/docker-templates/master/jlesage/images/avidemux-icon.png&w=200)](http://avidemux.org/)[![Avidemux](https://dummyimage.com/400x110/ffffff/575757&text=Avidemux)](http://avidemux.org/)
 
 Avidemux is a free video editor designed for simple cutting, filtering and encoding tasks.  It supports many file types, including AVI, DVD compatible MPEG files, MP4 and ASF, using a variety of codecs.  Tasks can be automated using projects, job queue and powerful scripting capabilities.
 
@@ -161,7 +158,7 @@ ports are part of the example.
 version: '3'
 services:
   avidemux:
-    image: jlesage/avidemux
+    image: lps-rocks/avidemux
     ports:
       - "5800:5800"
     volumes:
@@ -187,7 +184,7 @@ Finally, the Docker image can be manually updated with these steps:
 
   1. Fetch the latest image:
 ```
-docker pull jlesage/avidemux
+docker pull lps-rocks/avidemux
 ```
   2. Stop the container:
 ```
@@ -299,8 +296,6 @@ ReadExact: Socket error while reading
 ```
 However, for your convenience, an unofficial and working version is provided
 here:
-
-https://github.com/jlesage/docker-baseimage-gui/raw/master/tools/ssvnc_windows_only-1.0.30-r1.zip
 
 The only difference with the official package is that the bundled version of
 `stunnel` has been upgraded to version `5.49`, which fixes the connection
@@ -453,12 +448,3 @@ Where `CONTAINER` is the ID or the name of the container used during its
 creation (e.g. `crashplan-pro`).
 
 [TimeZone]: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-
-## Support or Contact
-
-Having troubles with the container or have questions?  Please
-[create a new issue].
-
-For other great Dockerized applications, see https://jlesage.github.io/docker-apps.
-
-[create a new issue]: https://github.com/jlesage/docker-avidemux/issues
