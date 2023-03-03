@@ -130,14 +130,14 @@ RUN \
     cd .. && \
     # Patch avidemux source.
     echo 'Patching avidemux...' && \
-    sed -e -i 's|#ifndef __APPLE__|#if 0 //#ifndef __APPLE__|' avidemux_${AVIDEMUX_VERSION}/avidemux/common/main.cpp && \
-    sed -e -i 's|#ifndef __APPLE__|#if 0 //#ifndef __APPLE__|' avidemux_${AVIDEMUX_VERSION}/avidemux/qt4/ADM_jobs/src/ADM_jobs.cpp && \
-    sed -e -i 's|#ifndef __APPLE__|#if 0 //#ifndef __APPLE__|' avidemux_${AVIDEMUX_VERSION}/avidemux_core/ADM_core/include/ADM_assert.h && \
-    sed -e -i 's|#include <execinfo.h>|//#include <execinfo.h>|' avidemux_${AVIDEMUX_VERSION}/avidemux_core/ADM_core/src/ADM_crashdump_unix.cpp && \
-    sed -e -i 's|#if !defined(__HAIKU__) && !defined(__sun__)|#if 0 //#if !defined(__HAIKU__) && !defined(__sun__)|' avidemux_${AVIDEMUX_VERSION}/avidemux_core/ADM_core/src/ADM_crashdump_unix.cpp && \
-    sed -e -i 's|canonicalize_file_name(in.c_str())|realpath(in.c_str(), NULL)|' avidemux_${AVIDEMUX_VERSION}/avidemux_core/ADM_core/src/ADM_folder_linux.cpp && \
-    sed -e -i 's|^\(END\)\?IF (NOT APPLE)|#\1IF (NOT APPLE)|' avidemux_${AVIDEMUX_VERSION}/avidemux_core/ADM_core/src/CMakeLists.txt && \
-    sed -e -i 's|SET(ADM_core_SRCS \(.*\) ADM_memcpy.cpp|#SET(ADM_core_SRCS \1 ADM_memcpy.cpp|' avidemux_${AVIDEMUX_VERSION}/avidemux_core/ADM_core/src/CMakeLists.txt && \
+    sed -i -e 's|#ifndef __APPLE__|#if 0 //#ifndef __APPLE__|' avidemux_${AVIDEMUX_VERSION}/avidemux/common/main.cpp && \
+    sed -i -e 's|#ifndef __APPLE__|#if 0 //#ifndef __APPLE__|' avidemux_${AVIDEMUX_VERSION}/avidemux/qt4/ADM_jobs/src/ADM_jobs.cpp && \
+    sed -i -e 's|#ifndef __APPLE__|#if 0 //#ifndef __APPLE__|' avidemux_${AVIDEMUX_VERSION}/avidemux_core/ADM_core/include/ADM_assert.h && \
+    sed -i -e 's|#include <execinfo.h>|//#include <execinfo.h>|' avidemux_${AVIDEMUX_VERSION}/avidemux_core/ADM_core/src/ADM_crashdump_unix.cpp && \
+    sed -i -e 's|#if !defined(__HAIKU__) && !defined(__sun__)|#if 0 //#if !defined(__HAIKU__) && !defined(__sun__)|' avidemux_${AVIDEMUX_VERSION}/avidemux_core/ADM_core/src/ADM_crashdump_unix.cpp && \
+    sed -i -e 's|canonicalize_file_name(in.c_str())|realpath(in.c_str(), NULL)|' avidemux_${AVIDEMUX_VERSION}/avidemux_core/ADM_core/src/ADM_folder_linux.cpp && \
+    sed -i -e 's|^\(END\)\?IF (NOT APPLE)|#\1IF (NOT APPLE)|' avidemux_${AVIDEMUX_VERSION}/avidemux_core/ADM_core/src/CMakeLists.txt && \
+    sed -i -e 's|SET(ADM_core_SRCS \(.*\) ADM_memcpy.cpp|#SET(ADM_core_SRCS \1 ADM_memcpy.cpp|' avidemux_${AVIDEMUX_VERSION}/avidemux_core/ADM_core/src/CMakeLists.txt && \
     # Compile avidemux.
     echo 'Compiling avidemux...' && \
     cd avidemux_${AVIDEMUX_VERSION} && \
